@@ -18,19 +18,19 @@
 
 <table>
   <tr>
-    <th>Handle</th>
-    <th>Rating</th>
-    <th>Max Rating</th>
-    <th>Rank</th>
-    <th>Max Rank</th>
-    <th>Solved</th>
+    <th>用户</th>
+    <th>当前分数</th>
+    <th>最高分数</th>
+    <th>当前段位</th>
+    <th>最高段位</th>
+    <th>通过题数</th>
   </tr>
   <tr>
     <td><a href="https://codeforces.com/profile/X_moink">X_moink</a></td>
     <td>708</td>
     <td>708</td>
-    <td>newbie</td>
-    <td>newbie</td>
+    <td>新手</td>
+    <td>新手</td>
     <td>22</td>
   </tr>
 </table>
@@ -38,13 +38,12 @@
 </div>
 <!-- CF-STATS-END -->
 
-</div>
 
-<br>
 
 </div>
 
 <br>
+
 
 <h2 align="center">仓库</h2>
 

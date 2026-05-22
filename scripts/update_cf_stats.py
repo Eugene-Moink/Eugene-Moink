@@ -12,6 +12,26 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0"
 }
 
+RANK_CN = {
+    "newbie": "新手",
+    "pupil": "入门",
+    "specialist": "普及",
+    "expert": "提高",
+    "candidate master": "省选",
+    "master": "大师",
+    "international master": "国际大师",
+    "grandmaster": "特级大师",
+    "international grandmaster": "国际特级大师",
+    "legendary grandmaster": "传奇特级大师",
+    "unrated": "未定级",
+}
+
+
+def rank_to_cn(rank: str) -> str:
+    if not isinstance(rank, str):
+        return "未定级"
+    return RANK_CN.get(rank.lower(), rank)
+
 
 def fetch_json(url, retry=3):
     last_error = None
@@ -32,7 +52,7 @@ def get_user_info():
     url = f"https://codeforces.com/api/user.info?handles={HANDLE}"
     data = fetch_json(url)
 
-    if data["status"] != "OK":
+    if data.get("status") != "OK":
         raise Exception("Failed to fetch user info")
 
     user = data["result"][0]
@@ -50,7 +70,7 @@ def get_solved_count():
     url = f"https://codeforces.com/api/user.status?handle={HANDLE}"
     data = fetch_json(url)
 
-    if data["status"] != "OK":
+    if data.get("status") != "OK":
         raise Exception("Failed to fetch submissions")
 
     solved = set()
@@ -74,6 +94,9 @@ def get_solved_count():
 
 
 def update_readme(stats, solved_count):
+    rank_cn = rank_to_cn(stats["rank"])
+    max_rank_cn = rank_to_cn(stats["maxRank"])
+
     with open(README_PATH, "r", encoding="utf-8") as f:
         content = f.read()
 
@@ -82,19 +105,19 @@ def update_readme(stats, solved_count):
 
 <table>
   <tr>
-    <th>Handle</th>
-    <th>Rating</th>
-    <th>Max Rating</th>
-    <th>Rank</th>
-    <th>Max Rank</th>
-    <th>Solved</th>
+    <th>用户</th>
+    <th>当前分数</th>
+    <th>最高分数</th>
+    <th>当前段位</th>
+    <th>最高段位</th>
+    <th>通过题数</th>
   </tr>
   <tr>
     <td><a href="https://codeforces.com/profile/{stats["handle"]}">{stats["handle"]}</a></td>
     <td>{stats["rating"]}</td>
     <td>{stats["maxRating"]}</td>
-    <td>{stats["rank"]}</td>
-    <td>{stats["maxRank"]}</td>
+    <td>{rank_cn}</td>
+    <td>{max_rank_cn}</td>
     <td>{solved_count}</td>
   </tr>
 </table>
