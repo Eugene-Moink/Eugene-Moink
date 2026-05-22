@@ -50,3 +50,22 @@
 | 天梯赛个人三等奖 | 2026-3-18 | GPLT 个人赛首次拿奖 |
 
 </div>
+
+<br>
+
+<h2 align="center">仓库</h2>
+
+<p align="center">
+  <a href="https://github.com/Eugene-Moink/acm-cpp-practice">acm-cpp-practice</a>
+</p>
+
+<p align="center">
+  算法练习、刷题记录与代码整理。
+</p>
+
+<br>
+
+<p align="center">
+  记录刷题，沉淀代码。
+</p><h1 align="center">Eugene-Moink</h1>
+<p align="center">算法竞赛刷题记录</p>
