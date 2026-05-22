@@ -1,4 +1,4 @@
-name: Update Codeforces Stats
+name: Update Profile Stats
 
 on:
   schedule:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  update-cf-stats:
+  update-stats:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,9 +25,10 @@ jobs:
         run: |
           pip install requests
 
-      - name: Update Codeforces stats
+      - name: Update stats
         run: |
           python scripts/update_cf_stats.py
+          python scripts/update_luogu_stats.py
 
       - name: Commit and push changes
         run: |
@@ -39,6 +40,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "update Codeforces stats"
+            git commit -m "update profile stats"
             git push
           fi
