@@ -1,7 +1,7 @@
 <h1 align="center">Eugene-Moink</h1>
 
 <p align="center">
-  Codeforces · 洛谷 · ACM / OI
+  Codeforces · 洛谷 · ACM 
 </p>
 
 <p align="center">
