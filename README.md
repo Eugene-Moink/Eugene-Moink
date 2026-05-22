@@ -1,18 +1,44 @@
 <h1 align="center">Eugene-Moink</h1>
 
 <p align="center">
-  Codeforces · 洛谷 · ACM 
+  Competitive Programming · C++ · ACM
 </p>
 
 <p align="center">
-  <a href="https://codeforces.com/profile/X_moink">Codeforces</a> /
-  <a href="https://www.luogu.com.cn/user/1887785">Luogu</a> /
-  <a href="https://github.com/Eugene-Moink/acm-cpp-practice">Repository</a>
+  <a href="https://codeforces.com/profile/X_moink">Codeforces</a>
+  ·
+  <a href="https://www.luogu.com.cn/user/1887785">Luogu</a>
 </p>
 
 ---
 
-<h2 align="center">Codeforces</h2>
+<h2 align="center">Profile</h2>
+
+<div align="center">
+
+<table>
+  <tr>
+    <th>Platform</th>
+    <th>Handle</th>
+    <th>Link</th>
+  </tr>
+  <tr>
+    <td>Codeforces</td>
+    <td>X_moink</td>
+    <td><a href="https://codeforces.com/profile/X_moink">Profile</a></td>
+  </tr>
+  <tr>
+    <td>Luogu</td>
+    <td>Morgann</td>
+    <td><a href="https://www.luogu.com.cn/user/1887785">Profile</a></td>
+  </tr>
+</table>
+
+</div>
+
+---
+
+<h2 align="center">Codeforces Stats</h2>
 
 <!-- CF-STATS-START -->
 
@@ -50,30 +76,18 @@
 
 <table>
   <tr>
-    <th>奖项</th>
-    <th>时间</th>
-    <th>备注</th>
+    <th>Award</th>
+    <th>Date</th>
+    <th>Note</th>
   </tr>
   <tr>
     <td>天梯赛个人三等奖</td>
-    <td>2026-3-18</td>
+    <td>2026-03-18</td>
     <td>GPLT 个人赛首次拿奖</td>
   </tr>
 </table>
 
 </div>
-
----
-
-<h2 align="center">Repository</h2>
-
-<p align="center">
-  <a href="https://github.com/Eugene-Moink/acm-cpp-practice">acm-cpp-practice</a>
-</p>
-
-<p align="center">
-  算法练习、刷题记录与代码整理
-</p>
 
 ---
 
