@@ -1,13 +1,16 @@
 <h1 align="center">Eugene-Moink</h1>
-<p align="center">算法竞赛刷题记录</p>
 
 <p align="center">
-  <a href="https://codeforces.com/profile/X_moink">Codeforces</a> ·
-  <a href="https://www.luogu.com.cn/user/1887785">洛谷</a> ·
-  <a href="https://github.com/Eugene-Moink/acm-cpp-practice">acm-cpp-practice</a>
+  Codeforces · 洛谷 · ACM / OI
 </p>
 
-<br>
+<p align="center">
+  <a href="https://codeforces.com/profile/X_moink">Codeforces</a> /
+  <a href="https://www.luogu.com.cn/user/1887785">Luogu</a> /
+  <a href="https://github.com/Eugene-Moink/acm-cpp-practice">Repository</a>
+</p>
+
+---
 
 <h2 align="center">Codeforces</h2>
 
@@ -39,33 +42,28 @@
 
 
 
-<br>
+---
 
-<h2 align="center">奖项</h2>
-
-<div align="center">
+<h2 align="center">Awards</h2>
 
 | 奖项             | 时间      | 备注                |
 | ---------------- | --------- | ------------------- |
 | 天梯赛个人三等奖 | 2026-3-18 | GPLT 个人赛首次拿奖 |
 
-</div>
+---
 
-<br>
-
-<h2 align="center">仓库</h2>
+<h2 align="center">Repository</h2>
 
 <p align="center">
   <a href="https://github.com/Eugene-Moink/acm-cpp-practice">acm-cpp-practice</a>
 </p>
 
 <p align="center">
-  算法练习、刷题记录与代码整理。
+  算法练习、刷题记录与代码整理
 </p>
 
-<br>
+---
 
 <p align="center">
-  记录刷题，沉淀代码。
+  Keep coding. Keep thinking.
 </p><h1 align="center">Eugene-Moink</h1>
-<p align="center">算法竞赛刷题记录</p>
