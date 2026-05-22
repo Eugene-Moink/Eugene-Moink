@@ -14,24 +14,33 @@
 <div align="center">
 
 <!-- CF-STATS-START -->
-| Handle | Rating | Max Rating | Rank | Max Rank | Solved |
-|---|---:|---:|---|---|---:|
-| [X_moink](https://codeforces.com/profile/X_moink) | 708 | 708 | newbie | newbie | 22 |
+<div align="center">
+
+<table>
+  <tr>
+    <th>Handle</th>
+    <th>Rating</th>
+    <th>Max Rating</th>
+    <th>Rank</th>
+    <th>Max Rank</th>
+    <th>Solved</th>
+  </tr>
+  <tr>
+    <td><a href="https://codeforces.com/profile/X_moink">X_moink</a></td>
+    <td>708</td>
+    <td>708</td>
+    <td>newbie</td>
+    <td>newbie</td>
+    <td>22</td>
+  </tr>
+</table>
+
+</div>
 <!-- CF-STATS-END -->
 
 </div>
 
 <br>
-
-<h2 align="center">洛谷</h2>
-
-<div align="center">
-
-<!-- LUOGU-STATS-START -->
-| User | UID | Submitted | Solved | Ranking |
-|---|---:|---:|---:|---:|
-| [Morgann](https://www.luogu.com.cn/user/1887785) | 1887785 | N/A | N/A | N/A |
-<!-- LUOGU-STATS-END -->
 
 </div>
 

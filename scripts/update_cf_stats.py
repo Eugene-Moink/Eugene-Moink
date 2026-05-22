@@ -1,5 +1,6 @@
 import requests
 import re
+import time
 
 HANDLE = "X_moink"
 README_PATH = "README.md"
@@ -7,10 +8,29 @@ README_PATH = "README.md"
 START = "<!-- CF-STATS-START -->"
 END = "<!-- CF-STATS-END -->"
 
+HEADERS = {
+    "User-Agent": "Mozilla/5.0"
+}
+
+
+def fetch_json(url, retry=3):
+    last_error = None
+
+    for _ in range(retry):
+        try:
+            response = requests.get(url, headers=HEADERS, timeout=20)
+            response.raise_for_status()
+            return response.json()
+        except Exception as e:
+            last_error = e
+            time.sleep(1)
+
+    raise last_error
+
 
 def get_user_info():
     url = f"https://codeforces.com/api/user.info?handles={HANDLE}"
-    data = requests.get(url, timeout=20).json()
+    data = fetch_json(url)
 
     if data["status"] != "OK":
         raise Exception("Failed to fetch user info")
@@ -28,7 +48,7 @@ def get_user_info():
 
 def get_solved_count():
     url = f"https://codeforces.com/api/user.status?handle={HANDLE}"
-    data = requests.get(url, timeout=20).json()
+    data = fetch_json(url)
 
     if data["status"] != "OK":
         raise Exception("Failed to fetch submissions")
@@ -58,9 +78,28 @@ def update_readme(stats, solved_count):
         content = f.read()
 
     new_stats = f"""<!-- CF-STATS-START -->
-| Handle | Rating | Max Rating | Rank | Max Rank | Solved |
-|---|---:|---:|---|---|---:|
-| [{stats["handle"]}](https://codeforces.com/profile/{stats["handle"]}) | {stats["rating"]} | {stats["maxRating"]} | {stats["rank"]} | {stats["maxRank"]} | {solved_count} |
+<div align="center">
+
+<table>
+  <tr>
+    <th>Handle</th>
+    <th>Rating</th>
+    <th>Max Rating</th>
+    <th>Rank</th>
+    <th>Max Rank</th>
+    <th>Solved</th>
+  </tr>
+  <tr>
+    <td><a href="https://codeforces.com/profile/{stats["handle"]}">{stats["handle"]}</a></td>
+    <td>{stats["rating"]}</td>
+    <td>{stats["maxRating"]}</td>
+    <td>{stats["rank"]}</td>
+    <td>{stats["maxRank"]}</td>
+    <td>{solved_count}</td>
+  </tr>
+</table>
+
+</div>
 <!-- CF-STATS-END -->"""
 
     pattern = re.compile(
