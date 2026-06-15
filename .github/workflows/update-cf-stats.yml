@@ -1,45 +1,70 @@
-name: Update Profile Stats
+name: Update Codeforces Stats
 
 on:
   schedule:
-    - cron: "0 0 * * *"
-  workflow_dispatch:
-
-permissions:
-  contents: write
+    - cron: '0 */6 * * *'  # 每6小时运行一次（UTC时间）
+  workflow_dispatch:  # 允许手动触发
+  push:
+    branches: [main, master]  # 当推送到主分支时也运行
 
 jobs:
-  update-stats:
+  update-codeforces-stats:
     runs-on: ubuntu-latest
-
+    name: Update Codeforces Statistics
+    
     steps:
+      # 1. 检出代码
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0  # 获取完整历史记录以便推送
+      
+      # 2. 设置Python环境
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
-
+          python-version: '3.10'
+          cache: 'pip'
+      
+      # 3. 安装依赖
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install requests
-
-      - name: Update stats
+          echo "✅ 依赖安装完成"
+      
+      # 4. 运行更新脚本
+      - name: Run Codeforces stats update script
         run: |
-          python scripts/update_cf_stats.py
-          python scripts/update_luogu_stats.py
-
+          python update_cf_stats.py  # 替换为你的脚本文件名
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      # 5. 检查文件是否被修改
+      - name: Check if README was modified
+        id: check_changes
+        run: |
+          git diff --quiet README.md && echo "no_changes=true" >> $GITHUB_OUTPUT || echo "no_changes=false" >> $GITHUB_OUTPUT
+          echo "✅ 检查README修改状态完成"
+      
+      # 6. 提交并推送更改（仅当文件有修改时）
       - name: Commit and push changes
+        if: steps.check_changes.outputs.no_changes == 'false'
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
           git add README.md
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "update profile stats"
-            git push
-          fi
+          git commit -m "📊 Update Codeforces statistics [bot]"
+          
+          # 使用安全的方式推送
+          git push origin HEAD:${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      # 7. 如果没有修改，输出信息
+      - name: No changes detected
+        if: steps.check_changes.outputs.no_changes == 'true'
+        run: |
+          echo "ℹ️ README.md 没有变化，无需提交"
